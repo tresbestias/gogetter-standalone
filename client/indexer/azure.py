@@ -40,10 +40,7 @@ def get_image_caption(image_path):
         analyze_url, headers=headers, params=params, data=image_data)
     response.raise_for_status()
     analysis = response.json()
-<<<<<<< HEAD
     print(analysis)
-=======
->>>>>>> 2097c4fd37ba43299a33e97ee4556d851c42071a
     image_caption = analysis["description"]["captions"][0]["text"].capitalize()
 
     result = [image_caption]
