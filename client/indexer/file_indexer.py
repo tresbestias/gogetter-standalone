@@ -7,6 +7,7 @@ import os
 from Conf import Configuration
 import sys
 import time
+import azure
 """
 
     index structure:
@@ -106,8 +107,22 @@ def get_new_indexing(last_time):
     result['deleteCount'] = len(deleted_ids)
     result['deleteResult'] = deleted_ids
     result['owner'] = Configuration.get_client_id()
+
+    ## additional tags for image
+    get_images_additional_info(modified_files)
+
     store_index(all_ids)
     return result
+
+def get_images_additional_info(modified_files):
+    
+    formats = set(['jpg','png'])
+    image_files = [ x for x in modified_files if x['text'].split('.')[-1] in formats ]
+    
+    for image in image_files:
+        meta = azure.get_image_caption(image['id'])
+        image['meta'] = meta
+        
 
 
 def get_file_link(file_id):

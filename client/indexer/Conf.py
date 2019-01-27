@@ -9,7 +9,7 @@ class Configuration():
 
     #CONFIG_FOLDER = './settings'
     CONFIG_FILE = CONFIG_FOLDER+'/settings.json'
-    INDEXED_FOLDERS = ['/home/shibin/Documents/']
+    INDEXED_FOLDERS = ['/home/shibin/Documents/test']
     LOCAL_IP = None
     # get the already stored client id
     @staticmethod
