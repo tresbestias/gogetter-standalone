@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from indexer.views import check,get_indexes
+from indexer.views import check,get_indexes,get_content,get_content_url
+from indexer.network_demon import NetworkDemon
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('available/',check),
-    url(r'index/*',get_indexes)
+    url(r'ping',check),
+    url(r'index*',get_indexes),
+    url(r'geturl*',get_content_url),
+    url(r'getcontent*',get_content)
 ]
+
+
+NetworkDemon.startup()

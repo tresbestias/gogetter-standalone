@@ -103,11 +103,16 @@ def get_new_indexing(last_time):
     result['nowTime'] = int( time.time())
     result['updateCount'] = len(modified_files)
     result['updateResult'] = modified_files
-    result['delteCount'] = len(deleted_ids)
+    result['deleteCount'] = len(deleted_ids)
     result['deleteResult'] = deleted_ids
     result['owner'] = Configuration.get_client_id()
     store_index(all_ids)
     return result
+
+
+def get_file_link(file_id):
+    return '/file?file='+file_id
+
 
 
 
