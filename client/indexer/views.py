@@ -46,8 +46,9 @@ def get_content_url(request):
 
     if request.method =='GET':
         file =  request.GET.get('file')
+        # print (str(request))
         ip = Configuration.get_ip_address()
-        path = 'http://'+ip+':8000/getcontent/?file='+file
+        path = 'http://'+request.META['HTTP_HOST']+'/getcontent/?file='+file
         result = {'path':path}
         return JsonResponse(result)
 
